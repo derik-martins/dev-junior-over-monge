@@ -1,0 +1,102 @@
+:root {
+    --page-bg: #f4f1eb;
+    --panel-bg: #fdfbf8;
+    --hero-bg: linear-gradient(135deg, #1f2937 0%, #314155 100%);
+    --hero-text: #f8fafc;
+    --accent: #c96a2d;
+    --muted: #6b7280;
+}
+
+body {
+    background: radial-gradient(circle at top right, rgba(201, 106, 45, 0.12), transparent 30%), var(--page-bg);
+    color: #1f2937;
+    font-family: "IBM Plex Sans", sans-serif;
+}
+
+.hero-panel {
+    background: var(--hero-bg);
+    border-radius: 24px;
+    color: var(--hero-text);
+    padding: 2.5rem;
+    box-shadow: 0 24px 50px rgba(15, 23, 42, 0.18);
+}
+
+.eyebrow {
+    color: #ffd8bf;
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+}
+
+.info-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 20px;
+    padding: 1.5rem;
+}
+
+.info-card ul {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+.card,
+.summary-card,
+.task-card {
+    background: var(--panel-bg);
+    border-radius: 18px;
+}
+
+.summary-card {
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    min-height: 140px;
+    padding: 1.5rem;
+}
+
+.summary-card .label {
+    color: var(--muted);
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+}
+
+.summary-card .value {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.task-card {
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.06);
+    height: 100%;
+}
+
+.badge-priority {
+    background: rgba(201, 106, 45, 0.12);
+    color: #9a4f20;
+    font-weight: 600;
+}
+
+.task-meta {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.empty-state {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px dashed rgba(15, 23, 42, 0.16);
+    border-radius: 18px;
+    color: var(--muted);
+    padding: 2rem;
+    text-align: center;
+}
+
+@media (max-width: 767.98px) {
+    .hero-panel {
+        padding: 1.75rem;
+    }
+}

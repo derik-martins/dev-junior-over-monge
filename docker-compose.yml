@@ -1,0 +1,45 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: junior-test-db
+    environment:
+      POSTGRES_DB: junior_challenge
+      POSTGRES_USER: junior
+      POSTGRES_PASSWORD: junior
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U junior -d junior_challenge"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ./backend
+    container_name: junior-test-backend
+    environment:
+      APP_SEED_DATA: "true"
+      TASKS_REPOSITORY: "postgres"
+      DATABASE_URL: "postgresql://junior:junior@db:5432/junior_challenge"
+      DATABASE_CONNECT_RETRIES: "10"
+      DATABASE_RETRY_DELAY: "1"
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: junior-test-frontend
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+
+volumes:
+  postgres_data:
